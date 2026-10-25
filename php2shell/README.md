@@ -1,5 +1,3 @@
-# YANREVENGE
-
 ### PHP2Shell — Shell UI dan Toolkit Riset Keamanan
 
 `YANREVENGE` adalah antarmuka shell untuk toolkit PHP2Shell. Repository ini
