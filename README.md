@@ -29,7 +29,7 @@ source ~/.bashrc   # (atau source ~/.zshrc jika menggunakan zsh)
 
 Setelah terpasang, perintah dapat digunakan dengan format:
 ```bash
-yan exploit -u <TARGET_URL> -c "<COMMAND>" --allow-remote --arch amd64
+yan exploit -u <TARGET_URL> -c "<COMMAND>" --allow-remote
 ```
 
 ## Peringatan Penggunaan
