@@ -1,0 +1,72 @@
+# Katalog Versi PHP Rentan (Vulnerable Catalog)
+
+Dokumen ini berisi daftar versi PHP yang terdampak oleh celah keamanan (CVE), versi perbaikannya (*fixed release*), serta status verifikasi eksploitasi (*RCE profiles*).
+
+> **Catatan Sumber:** Data diperbarui per **21 Oktober 2026** berdasarkan dokumen analisis `PHP2Shell`.
+
+---
+
+## 1. Ringkasan Cabang Versi PHP (Branches)
+
+| Cabang PHP | Versi Terdampak | Versi Perbaikan (*Fixed In*) | Status EOL? | Catatan Tambahan |
+| :--- | :--- | :--- | :---: | :--- |
+| **PHP 5.4** | `5.4.0+` | *Tidak ada* |  Ya | Sudah tidak didukung (*End of Life*) |
+| **PHP 5.5** | `5.5.0+` | *Tidak ada* |  Ya | Sudah tidak didukung (*End of Life*) |
+| **PHP 5.6** | `5.6.0+` | *Tidak ada* |  Ya | Sudah tidak didukung (*End of Life*) |
+| **PHP 7.0** | `7.0.0+` | *Tidak ada* |  Ya | Sudah tidak didukung (*End of Life*) |
+| **PHP 7.1** | `7.1.0+` | *Tidak ada* |  Ya | Sudah tidak didukung (*End of Life*) |
+| **PHP 7.2** | `7.2.0+` | *Tidak ada* |  Ya | Sudah tidak didukung (*End of Life*) |
+| **PHP 7.3** | `7.3.0+` | *Tidak ada* |  Ya | Sudah tidak didukung (*End of Life*) |
+| **PHP 7.4** | `7.4.0+` | *Tidak ada* |  Ya | Hanya rilis *backport source* minimal |
+| **PHP 8.0** | `8.0.0+` | *Tidak ada* |  Ya | Hanya rilis *backport source* minimal |
+| **PHP 8.1** | `8.1.0+` | *Tidak ada* |  Ya | Hanya rilis *backport source* minimal |
+| **PHP 8.2** | `8.2.0 - 8.2.34` | **`8.2.35`** |  Tidak | Masih didukung (*Active*) |
+| **PHP 8.3** | `8.3.0 - 8.3.35` | **`8.3.36`** |  Tidak | Masih didukung (*Active*) |
+| **PHP 8.4** | `8.4.0 - 8.4.26` | **`8.4.27`** |  Tidak | Masih didukung (*Active*) |
+| **PHP 8.5** | `8.5.0 - 8.5.11` | **`8.5.12`** |  Tidak | Masih didukung (*Active*) |
+| **PHP 8.6** | `8.6.0 RC4` | **`8.6.0 RC4`** |  Tidak | Cabang pra-rilis (*Pre-release*) |
+
+---
+
+## 2. Profil Eksploitasi Teruji (Profiles)
+
+Daftar pengujian khusus pada lingkungan/build tertentu untuk mengecek keberhasilan *Remote Code Execution* (RCE):
+
+###  PHP 8.4.26
+* **File Profil:** `profiles/8.4.26-bookworm.json`
+* **Lingkungan Build:** `php:8.4.26-apache` (Debian Bookworm, `mod_php`, `prefork`)
+* **Status RCE:**  **Berhasil (True)**
+* **Terverifikasi:**  **Ya**
+
+###  PHP 8.5.11 (ARM64)
+* **File Profil:** `profiles/8.5.11-bookworm-aarch64.json`
+* **Lingkungan Build:** `php:8.5.11-apache` (Debian Bookworm, `aarch64`, `mod_php`, `prefork`)
+* **Status RCE:**  **Berhasil (True)**
+* **Terverifikasi:**  **Ya**
+
+### ⚠️ PHP 8.3.33 (WordPress)
+* **File Profil:** `profiles/8.3.33-wordpress.json`
+* **Lingkungan Build:** `wordpress:7.1.1-apache` (PHP 8.3.33, `mod_php`, `prefork`)
+* **Status RCE:** ❌ **Gagal (False)**
+* **Terverifikasi:** ❌ **Tidak**
+* **Catatan:** Kebocoran informasi pada tahap 1–2 berhasil, namun tahap 3 belum terkalibrasi.
+
+### ⚠️ PHP 8.3.35 (ARM64)
+* **File Profil:** `profiles/8.3.35-bookworm-aarch64.json`
+* **Lingkungan Build:** `php:8.3.35-apache` (Debian Bookworm, `aarch64`, `mod_php`, `prefork`)
+* **Status RCE:** ❌ **Gagal (False)**
+* **Terverifikasi:** ❌ **Tidak**
+* **Catatan:** Kebocoran informasi pada tahap 1–2 berhasil, namun tahap 3 belum terkalibrasi.
+
+### ⚠️ PHP 8.2.34 (ARM64)
+* **File Profil:** `profiles/8.2.34-bookworm-aarch64.json`
+* **Lingkungan Build:** `php:8.2.34-apache` (Debian Bookworm, `aarch64`, `mod_php`, `prefork`)
+* **Status RCE:** ❌ **Gagal (False)**
+* **Terverifikasi:** ❌ **Tidak**
+* **Catatan:** *Offset* memori berhasil diekstrak, tetapi kebocoran *heap* belum dapat direproduksi.
+
+---
+
+## 3. Catatan Cakupan (Coverage Note)
+
+> Versi yang terdaftar dalam cabang rentan menandakan sistem tersebut memiliki potensi celah keamanan. Namun, **eksploitasi RCE hanya dapat berjalan jika terdapat file profil yang terverifikasi** untuk *build* persis tersebut. Perbaikan dari vendor (*backport*) tidak dapat disimpulkan hanya berdasarkan teks versi saja.

