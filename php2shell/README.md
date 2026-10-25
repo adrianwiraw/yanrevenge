@@ -1,9 +1,11 @@
-# PHP2Shell
+# YANREVENGE
 
-PHP2Shell adalah toolkit riset keamanan untuk mempelajari dan melakukan
-pengujian berizin terkait CVE-2026-109618 dan CVE-2026-109619 pada konfigurasi
-PHP tertentu. Isi repository mencakup skrip Python, data katalog, profil build,
-serta materi upstream yang dirujuk oleh toolkit.
+### PHP2Shell — Shell UI dan Toolkit Riset Keamanan
+
+`YANREVENGE` adalah antarmuka shell untuk toolkit PHP2Shell. Repository ini
+berisi materi riset keamanan, skrip pendukung, katalog, dan profil build yang
+berkaitan dengan konfigurasi PHP tertentu. Gunakan informasi dan pengujian
+hanya untuk sistem milik sendiri atau yang tercakup dalam izin tertulis.
 
 Toolkit ini bersifat **dual-use** dan beberapa pengujiannya dapat mengganggu
 layanan. Gunakan hanya pada sistem milik sendiri atau sistem yang secara jelas
@@ -21,9 +23,47 @@ pihak lain maupun pada lingkungan produksi.
 | `profiles/schema.json` | Skema untuk struktur data profil JSON. |
 | `payload/payload.txt` | Berkas data payload yang menjadi bagian dari materi toolkit. |
 | `vendor/php2shell-upstream/` | Materi upstream yang dirujuk, termasuk kode, dokumentasi riset, konfigurasi Docker, dan catatan lab. |
+| `install.sh` | Menambahkan fungsi shell `yan` ke konfigurasi Bash atau Zsh pengguna. |
 | `LICENSE` | Ketentuan lisensi repository. |
 | `KEAMANAN.md` | Kebijakan pelaporan masalah pada toolkit dan panduan penggunaan yang diizinkan. |
 | `PERINGATAN.md` | Peringatan singkat sebelum menggunakan materi proyek. |
+
+## `install.sh` — Instalasi Perintah `yan`
+
+Skrip instalasi mendaftarkan fungsi `yan` di `~/.bashrc` atau `~/.zshrc`.
+Skrip tidak menyalin berkas proyek atau memasang dependensi. Fungsi tersebut
+menyediakan perintah bantuan dan shortcut:
+
+- `yan help` menampilkan bantuan singkat; `yan -h` dan `yan --help` adalah aliasnya.
+- `yan bootstrap` menjalankan `tools/bootstrap_upstream.py`.
+
+### Setup lokal
+
+```bash
+git clone <https://github.com/adrianwiraw/yanrevenge.git> ~/yanrevenge/php2shell
+cd ~/yanrevenge/php2shell
+bash install.sh
+```
+
+Skrip saat ini mengasumsikan repository ada di `~/yanrevenge/php2shell`.
+Setelah instalasi, muat konfigurasi sesuai shell yang digunakan. Untuk Bash:
+
+```bash
+source ~/.bashrc
+```
+
+Untuk Zsh:
+
+```zsh
+source ~/.zshrc
+```
+
+Verifikasi bahwa antarmuka tersedia dengan `yan help`. Sebelum melakukan
+pengujian keamanan apa pun, pastikan target adalah lab yang terisolasi dan
+izin, ruang lingkup, pemantauan, serta prosedur pemulihannya sudah jelas.
+README ini tidak menyediakan langkah untuk mengeksploitasi target. Baca bagian
+[Penggunaan yang Bertanggung Jawab](#penggunaan-yang-bertanggung-jawab) dan
+[`PERINGATAN.md`](./PERINGATAN.md) terlebih dahulu.
 
 ### Gambaran skrip di `tools/`
 

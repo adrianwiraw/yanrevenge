@@ -18,14 +18,14 @@ YELLOW = "\033[93m"
 CYAN = "\033[96m"
 MAGENTA = "\033[95m"
 
-# ASCII Art Cyberpunk / Heavy Block Font untuk YANREVENGE
+# ASCII Art Massive, Thick, & Clear Block Font untuk YANREVENGE (Nuansa Merah Pekat)
 BANNER = r"""
-██╗   ██╗ █████╗ ███╗   ██╗██████╗ ███████╗██╗   ██╗███████╗███╗   ██╗██████╗ ███████╗
-╚██╗ ██╔╝██╔══██╗████╗  ██║██╔══██╗██╔════╝██║   ██║██╔════╝████╗  ██║██╔══██╗██╔════╝
- ╚████╔╝ ███████║██╔██╗ ██║██████╔╝█████╗  ██║   ██║█████╗  ██╔██╗ ██║██████╔╝█████╗  
-  ╚██╔╝  ██╔══██║██║╚██╗██║██╔══██╗██╔══╝  ╚██╗ ██╔╝██╔══╝  ██║╚██╗██║██╔══██╗██╔══╝  
-   ██║   ██║  ██║██║ ╚████║██║  ██║███████╗ ╚████╔╝ ███████╗██║ ╚████║██████╔╝███████╗
-   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝╚═════╝ ╚══════╝
+██╗   ██╗ █████╗ ███╗   ██╗██████╗ ███████╗██╗   ██╗███████╗███╗   ██╗ ██████╗ ███████╗
+╚██  ██╔╝██╔══██╗████╗  ██║██╔══██╗██╔════╝██║   ██║██╔════╝████╗  ██║██╔════╝ ██╔════╝
+ ╚████╔╝ ███████║██╔██╗ ██║██████╔╝█████╗  ██║   ██║█████╗  ██╔██╗ ██║██║  ███╗█████╗  
+  ╚██╔╝  ██╔══██║██║╚██╗██║██╔══██╗██╔══╝  ╚██╗ ██╔╝██╔══╝  ██║╚██╗██║██║   ██║██╔══╝  
+   ██║   ██║  ██║██║ ╚████║██║  ██║███████╗ ╚████╔╝ ███████╗██║ ╚████║╚██████╔╝███████╗
+   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
 """
 
 
@@ -45,27 +45,27 @@ class UI:
         return f"{int(total) // 60:02d}:{total % 60:05.2f}"
 
     def banner(self) -> None:
-        print(self.c(MAGENTA + BOLD, BANNER))
+        print(self.c(RED + BOLD, BANNER))
         print(
             self.c(
-                CYAN + BOLD,
-                "  exploit by yanrevenge  ·  CVE-2026-109618 / CVE-2026-109619",
+                RED + BOLD,
+                "   exploit by yanrevenge  ·  CVE-2026-109618 / CVE-2026-109619",
             )
         )
         print(
             self.c(
                 DIM,
-                "  automatic target detection, build profile dispatch and command execution",
+                "   automatic target detection, build profile dispatch and command execution",
             )
         )
-        print(self.c(DIM, "  authorized testing only\n"))
+        print(self.c(DIM, "   authorized testing only\n"))
 
     def chain(self, index: str, text: str) -> None:
-        print(self.c(BOLD + CYAN, f"[*] CHAIN {index}  ") + self.c(DIM, text))
+        print(self.c(BOLD + RED, f"[*] CHAIN {index}  ") + self.c(DIM, text))
 
     def stage(self, name: str, message: str = "") -> None:
-        label = self.c(CYAN, f"{name:<10}")
-        print(f"{self.c(DIM, self.elapsed())}  {label} {message}")
+        label = self.c(RED, f"{name:<10}")
+        print(f"{self.c(DIM, self.elapsed())}   {label} {message}")
 
     def ok(self, message: str) -> None:
         self.stage("OK", self.c(GREEN, message))
@@ -77,7 +77,7 @@ class UI:
         self.stage("WARN", self.c(YELLOW, message))
 
     def crit(self, message: str) -> None:
-        self.stage("CRIT", self.c(RED, message))
+        self.stage("CRIT", self.c(RED + BOLD, message))
 
     def command(self, cmd: list[str]) -> None:
         self.stage("DRY-RUN", self.c(DIM, shlex.join(cmd)))
@@ -91,7 +91,7 @@ class UI:
         elif line.startswith("[-]"):
             body = self.c(YELLOW, line)
         elif line.startswith("[*]"):
-            body = self.c(CYAN, line)
+            body = self.c(RED, line)
         else:
             body = self.c(DIM, line)
         print(f"   {self.c(DIM, '│')} {body}")
