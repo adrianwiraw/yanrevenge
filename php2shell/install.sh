@@ -22,11 +22,13 @@ if [ -n "$ZSH_VERSION" ] || [[ "$SHELL" == */zsh ]]; then
 fi
 
 # Blok fungsi yan yang akan disuntikkan ke bashrc/zshrc
-read -r -d '' YAN_FUNCTION << 'EOF'
+INSTALL_DIR_Q="$(printf '%q' "$INSTALL_DIR")"
+read -r -d '' YAN_FUNCTION << EOF
 
 # --- YANREVENGE TOOLKIT START ---
+YANREVENGE_INSTALL_DIR=$INSTALL_DIR_Q
 yan() {
-    case "$1" in
+    case "\$1" in
         ""|help|-h|--help)
             cat <<'YAN_HELP'
 Penggunaan: yan <perintah>
@@ -35,6 +37,7 @@ Perintah:
   help, -h, --help   Tampilkan bantuan ini.
   bootstrap          Jalankan bootstrap_upstream.py.
   exploit            Jalankan php2shell_auto.py dengan argumen yang diberikan.
+  lab                Kelola lab PHP lokal (up, status, down, test).
 
 Gunakan operasi pengujian hanya di lab terisolasi yang Anda miliki atau
 yang secara eksplisit tercakup dalam izin tertulis.
@@ -42,13 +45,21 @@ YAN_HELP
             ;;
         exploit)
             shift
-            python3 ~/yanrevenge/php2shell/tools/php2shell_auto.py "$@"
+            python3 "\$YANREVENGE_INSTALL_DIR/tools/php2shell_auto.py" "\$@"
             ;;
         bootstrap)
-            python3 ~/yanrevenge/php2shell/tools/bootstrap_upstream.py
+            python3 "\$YANREVENGE_INSTALL_DIR/tools/bootstrap_upstream.py"
+            ;;
+        lab)
+            shift
+            if [ "\$#" -eq 0 ]; then
+                echo "Penggunaan: yan lab <up|status|down|test> [opsi]" >&2
+                return 2
+            fi
+            python3 "\$YANREVENGE_INSTALL_DIR/tools/php2shell_labs.py" "\$@"
             ;;
         *)
-            echo "Perintah tidak dikenal: $1" >&2
+            echo "Perintah tidak dikenal: \$1" >&2
             echo "Jalankan 'yan help' untuk melihat daftar perintah." >&2
             return 2
             ;;

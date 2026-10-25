@@ -34,6 +34,14 @@ menyediakan perintah bantuan dan shortcut:
 
 - `yan help` menampilkan bantuan singkat; `yan -h` dan `yan --help` adalah aliasnya.
 - `yan bootstrap` menjalankan `tools/bootstrap_upstream.py`.
+- `yan lab up` menyalakan lab PHP lokal; `yan lab status` memeriksa status,
+  `yan lab down` menghentikannya, dan `yan lab test` menjalankan pengujian
+  terhadap lab lokal yang aktif. Tambahkan `--only <versi[,versi...]>` setelah
+  `up` untuk memilih build tertentu.
+
+Lab PHP hanya dipublikasikan pada alamat loopback (`127.0.0.1`). Docker harus
+terpasang dan berjalan untuk perintah lab. Perintah `test` melakukan pengujian
+aktif dan hanya boleh digunakan terhadap lab terisolasi milik Anda.
 
 ### Setup lokal
 
@@ -43,7 +51,7 @@ cd ~/yanrevenge/php2shell
 bash install.sh
 ```
 
-Skrip saat ini mengasumsikan repository ada di `~/yanrevenge/php2shell`.
+Perintah `yan` menggunakan lokasi repository tempat `install.sh` dijalankan.
 Setelah instalasi, muat konfigurasi sesuai shell yang digunakan. Untuk Bash:
 
 ```bash
