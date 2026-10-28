@@ -1,9 +1,9 @@
-### PHP2Shell — Shell UI dan Toolkit Riset Keamanan
+# PHP2Shell — Toolkit Riset Keamanan
 
-`YANREVENGE` adalah antarmuka shell untuk toolkit PHP2Shell. Repository ini
-berisi materi riset keamanan, skrip pendukung, katalog, dan profil build yang
-berkaitan dengan konfigurasi PHP tertentu. Gunakan informasi dan pengujian
-hanya untuk sistem milik sendiri atau yang tercakup dalam izin tertulis.
+PHP2Shell adalah toolkit riset keamanan yang berisi skrip pendukung, katalog,
+dan profil build untuk mempelajari konfigurasi PHP tertentu. Gunakan informasi
+dan pengujian hanya pada sistem milik sendiri atau yang tercakup dalam izin
+tertulis.
 
 Toolkit ini bersifat **dual-use** dan beberapa pengujiannya dapat mengganggu
 layanan. Gunakan hanya pada sistem milik sendiri atau sistem yang secara jelas
@@ -45,13 +45,13 @@ aktif dan hanya boleh digunakan terhadap lab terisolasi milik Anda.
 
 ### Setup lokal
 
+Jalankan perintah berikut dari direktori proyek PHP2Shell:
+
 ```bash
-git clone <https://github.com/adrianwiraw/yanrevenge.git> ~/yanrevenge/php2shell
-cd ~/yanrevenge/php2shell
 bash install.sh
 ```
 
-Perintah `yan` menggunakan lokasi repository tempat `install.sh` dijalankan.
+Perintah `yan` menggunakan lokasi proyek PHP2Shell tempat `install.sh` dijalankan.
 Setelah instalasi, muat konfigurasi sesuai shell yang digunakan. Untuk Bash:
 
 ```bash
