@@ -1,4 +1,4 @@
-# YanRevenge || Happy Hacking wkwkwk
+# Happy Hacking wkwkwk
 
 ```text
 ██╗   ██╗ █████╗ ███╗   ██╗██████╗ ███████╗██╗   ██╗███████╗███╗   ██╗ ██████╗ ███████╗
