@@ -1,20 +1,32 @@
-# Happy Development wkwkwk
+# Happy Hacking wkwkwk
 
 ```text
-██╗   ██╗ █████╗ ███╗   ██╗██████╗ ███████╗██╗   ██╗
-╚██  ██╔╝██╔══██╗████╗  ██║██╔══██╗██╔════╝██║   ██║
- ╚████╔╝ ███████║██╔██╗ ██║██║  ██║█████╗  ██║   ██║
-  ╚██╔╝  ██╔══██║██║╚██╗██║██║  ██║██╔══╝  ╚██╗ ██╔╝
-   ██║   ██║  ██║██║ ╚████║██████╔╝███████╗ ╚████╔╝ 
-   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚══════╝  ╚═══╝  
+██╗   ██╗ █████╗ ███╗   ██╗██████╗ ███████╗██╗   ██╗███████╗███╗   ██╗ ██████╗ ███████╗
+╚██  ██╔╝██╔══██╗████╗  ██║██╔══██╗██╔════╝██║   ██║██╔════╝████╗  ██║██╔════╝ ██╔════╝
+ ╚████╔╝ ███████║██╔██╗ ██║██████╔╝█████╗  ██║   ██║█████╗  ██╔██╗ ██║██║  ███╗█████╗  
+  ╚██╔╝  ██╔══██║██║╚██╗██║██╔══██╗██╔══╝  ╚██╗ ██╔╝██╔══╝  ██║╚██╗██║██║   ██║██╔══╝  
+   ██║   ██║  ██║██║ ╚████║██║  ██║███████╗ ╚████╔╝ ███████╗██║ ╚████║╚██████╔╝███████╗
+   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝╚═════╝ ╚══════╝
 ```
 
-Yandev adalah kumpulan aplikasi web eksperimental lintas bahasa dan framework yang dirancang untuk pengujian performa, eksplorasi arsitektur, dan pengembangan sistem.
+YanRevenge adalah kumpulan tools untuk riset dan pengujian keamanan berizin
+terhadap kerentanan yang sedang ramai dibahas. Setiap tool berfokus pada CVE
+atau teknologi tertentu, seperti PHP2Shell.
 
-## Web Projects
+## Tools
 
-- [yanpokemontcg](./yanpokemontcg/README.md) — Aplikasi *full-stack marketplace* dan manajemen koleksi kartu Pokémon berbasis MNG Stack (MongoDB, Next.js, Go/Gin). Mendukung autentikasi multi-metode, transaksi koin *in-app*, serta integrasi *payment gateway* Midtrans.
+- [PHP2Shell](./php2shell/README.md) — toolkit riset untuk mempelajari
+  konfigurasi PHP terkait CVE-2026-109618 dan CVE-2026-109619. README
+  PHP2Shell berisi dokumentasi proyek, instalasi perintah global `yan`, serta
+  daftar command dan shortcut yang tersedia.
 
-## Penggunaan & Pengujian Lab
+## Penggunaan yang Bertanggung Jawab
 
-Seluruh proyek dalam repositori ini ditujukan untuk lingkungan pengujian laboratorium (*sandbox*). Pastikan untuk mengonfigurasi `environment variables` secara terisolasi dan menggunakan kredensial pengujian (*sandbox/demo mode*) saat menjalankan fitur pihak ketiga.
+Gunakan tools hanya pada sistem milik sendiri atau sistem yang secara jelas
+tercakup dalam izin tertulis. Pengujian keamanan dapat mengganggu layanan;
+utamakan lab terisolasi dan jangan menguji sistem pihak lain tanpa izin.
+
+Informasi CVE dan hasil riset bukan advisori resmi maupun bukti bahwa sistem
+tertentu rentan atau aman. Selalu verifikasi dengan advisori resmi dan vendor
+terkait.
+ buatkan versi yandev seperti ini aja 
